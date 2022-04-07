@@ -41,7 +41,7 @@ func rootPost(w http.ResponseWriter, req *http.Request) {
 	//Consider handeling missing data
 	value := req.Form["secret"][0]
 	if value == os.Getenv("SECRET") {
-		fmt.Fprintln(w, "Put secret word here")
+		fmt.Fprintln(w, os.Getenv("FLAG"))
 	} else {
 		rootGet(w, req)
 	}

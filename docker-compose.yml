@@ -8,5 +8,3 @@ services:
       - "8080:8080"
     env_file:
       - .env
-    environment:
-      - FLAG="RSASM{i3O2c53s39r0rUdMIN2Y0LpDG4OEMG20}"

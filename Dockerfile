@@ -14,7 +14,9 @@ COPY go.sum ./
 RUN go mod download
 
 # Copy go files
-COPY *.go .
+COPY main.go .
+
+COPY static static
 
 # Build go executable
 RUN go build -o /server

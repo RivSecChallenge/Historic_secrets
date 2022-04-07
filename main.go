@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
 func check(err error) {
@@ -15,7 +16,6 @@ func check(err error) {
 
 func main() {
 	http.HandleFunc("/", root)
-
 	fmt.Println("Server started at port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
@@ -40,7 +40,9 @@ func rootPost(w http.ResponseWriter, req *http.Request) {
 
 	//Consider handeling missing data
 	value := req.Form["secret"][0]
-	if value == "Spring2022" {
+	if value == os.Getenv("SECRET") {
 		fmt.Fprintln(w, "Put secret word here")
+	} else {
+		rootGet(w, req)
 	}
 }
